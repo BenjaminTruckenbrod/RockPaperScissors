@@ -31,7 +31,29 @@ function playRound(playerSelection , computerSelection){
 
 }
 
-console.log(computerPlay());
-playerSelection = prompt('What do you choose?').toLowerCase();
-computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+//console.log(computerPlay());
+//playerSelection = prompt('What do you choose?').toLowerCase();
+//computerSelection = computerPlay();
+//console.log(playRound(playerSelection, computerSelection));
+
+function game(){
+    scoreA=0;
+    scoreB=0;
+
+    for (let i=0; i<5; i++) {
+        computerSelection = computerPlay();
+        playerSelection = prompt('What do you choose?').toLowerCase();
+        result = playRound(playerSelection, computerSelection);
+        if (result.charAt(4) == 'L')
+            scoreB++;
+        if (result.charAt(4) == 'W')
+            scoreA++;
+        console.log(result);
+
+    }
+    if (scoreA>scoreB)
+        return "You won the game!";
+    return "You lost the game!";
+}
+
+console.log(game());
