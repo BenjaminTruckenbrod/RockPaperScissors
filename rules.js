@@ -40,20 +40,31 @@ function game(){
     scoreA=0;
     scoreB=0;
 
-    for (let i=0; i<5; i++) {
-        computerSelection = computerPlay();
-        playerSelection = prompt('What do you choose?').toLowerCase();
-        result = playRound(playerSelection, computerSelection);
-        if (result.charAt(4) == 'L')
-            scoreB++;
-        if (result.charAt(4) == 'W')
-            scoreA++;
-        console.log(result);
+    //for (let i=0; i<5; i++) {
+        //computerSelection = computerPlay();
+        
+        //result = playRound(playerSelection, computerSelection);
+        //if (result.charAt(4) == 'L')
+            //scoreB++;
+        //if (result.charAt(4) == 'W')
+            //scoreA++;
+        //console.log(result);
 
-    }
+    //}
     if (scoreA>scoreB)
         return "You won the game!";
     return "You lost the game!";
 }
 
-console.log(game());
+
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+      alert(button.id);
+      compPlay = computerPlay();
+      playRound(button.id, compPlay);
+    });
+  });
